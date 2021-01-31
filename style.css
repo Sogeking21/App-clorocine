@@ -1,0 +1,11 @@
+body{
+    background-color: #e5e5e5;
+}
+.nav-extended{
+    background-image: url("img/capa.jpg");
+    background-size: cover;
+    background-blend-mode: soft-light;
+}
+.nav-header h1{
+    text-shadow: 2px 2px 15px #000000;
+}
