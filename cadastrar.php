@@ -30,7 +30,7 @@
                 <!-- input titulo-->
                   <div class="row">
                     <div class="input-field col s6">
-                      <input  name="titulo" id="titulo" type="text" class="validate"  require>
+                      <input  name="titulo" id="titulo" type="text" class="validate"  required>
                       <label for="titulo">titulo do filme</label>
                     </div>
                   </div>
@@ -47,7 +47,7 @@
               <!-- input nota-->
               <div class="row">
                     <div class="input-field col s1">
-                      <input  name="nota" id="nota" type="number" step=".1" min="0" max="10" class="validate" require>
+                      <input  name="nota" id="nota" type="number" step=".1" min="0" max="10" class="validate" required>
                       <label for="nota">Nota</label>
                     </div>
                   </div>

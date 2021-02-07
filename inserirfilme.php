@@ -1,24 +1,23 @@
 <?php
-$titulo = $_POST["titulo"];
-$sinopse = $_POST["sinopse"];
-$nota =  $_POST["nota"];
-$poster = $_POST["poster"];
 
-$bd = new SQLite3("filmes.db");
+session_start();
+require"./repository/FilmesRepositoryPDO.php";
+require"./model/Filme.php";
 
-$sql = "INSERT INTO filmes (titulo, poster, sinopse, nota) VALUES (
+$filmesRepository = new FilmeRepositoryPDO();
+$filme = new Filme();
 
-    '$titulo',
-    '$poster',
-    '$sinopse',
-    $nota
-    
-)";
+$filme->titulo     = $_POST["titulo"];
+$filme->sinopse    = $_POST["sinopse"];
+$filme->nota       = $_POST["nota"];
+$filme->poster     = $_POST["poster"];
 
-if ($bd->exec($sql))
-echo "\nfilmes inseridos com sucesso\n"; 
+
+if ($filmesRepository->salvar($filme))
+    $_SESSION["msg"] = "Filme cadastrado com sucesso"; 
 else 
-echo "\nerro ao inserir filmes.".$bd->lastErrorMsg();
+    $_SESSION["msg"] = " Erro ao cadastrar filme";    
 
+header("Location: galeria.php");
 
 ?>
