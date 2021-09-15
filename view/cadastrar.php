@@ -7,8 +7,8 @@
     <div class="nav-wrapper">
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="galeria.php">Galeira</a></li>
-        <li><a href="cadastrar.php">Cadastar</a></li>
+        <li><a href="/">Galeira</a></li>
+        <li><a href="/novo">Cadastar</a></li>
       </ul>
     </div>
     <div class="nav-header center">
@@ -22,7 +22,7 @@
   <!--Formulario-->
   
   <div class="row">
-  <form method="POST" action="inserirfilme.php">
+  <form method="POST" enctype="multipart/form-data">
     <div class="col s6 offset-s3 ">
         <div class="card ">
             <div class="card-content white-text">
@@ -55,7 +55,7 @@
                   <div class="file-field input-field">
                     <div class="btn">
                       <span>Capa</span>
-                      <input type="file" >
+                      <input type="file" name="poster_file">
                     </div>
                     <div class="file-path-wrapper">
                       <input class="file-path validate" type="text" name="poster">
@@ -63,7 +63,7 @@
                   </div>
                   <!-- botao cancelar e comfirmar-->
             <div class="card-action">
-                <a  class="btn" href="index.php">Cancelar</a>
+                <a  class="btn" href="/">Cancelar</a>
                 <button type="submit" class="waves-effect waves-light btn">Confirmar</button>
             </div>
         </div>
@@ -74,3 +74,4 @@
 
 </body>
 </html>
+<?php
