@@ -23,7 +23,7 @@ $filmes = $controller->index();
       </ul>
     </div>
     <div class="nav-header center">
-      <h1>CLOROCINE</h1>
+      <h1 class="titulo">CLOROCINE</h1>
     </div>
     <div class="nav-content">
       <ul class="tabs tabs-transparent  purple darken-1">
@@ -37,10 +37,10 @@ $filmes = $controller->index();
   <div class="container">
     <div class="row">
       <?php foreach ($filmes as $filme) : ?>
-        <div class="col s12 m6 l3">
-          <div class="card hoverable">
+        <div class="col s7 m4 14 xl3">
+          <div class="card hoverable card-serie">
             <div class="card-image">
-              <img src="<?= $filme->poster ?>" class="activator" />
+              <img src="<?= $filme->poster ?>" alt="">
 
               <button class="btn-fav btn-floating halfway-fab waves-effect waves-light red" data-id="<?= $filme->id ?>">
                 <i class=" material-icons"><?= ($filme->favorito) ? "favorite" : "favorite_border" ?></i></button>
@@ -51,6 +51,9 @@ $filmes = $controller->index();
               </P>
               <span class="card-title"><?= $filme->titulo ?></span>
               <p><?= $filme->sinopse ?></p>
+              <button class="waves-effect weves-light btn-small right red accent-2 btn-delete" data-id="<?= $filme->id ?>"><i class="material-icons">Delete</i>
+
+              </button>
             </div>
           </div>
         </div>
@@ -78,6 +81,30 @@ $filmes = $controller->index();
           .catch(error => {
             M.toast({
               html: 'Erro ao favoritar'
+            })
+          })
+      });
+    });
+
+    document.querySelectorAll(".btn-delete").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const id = btn.getAttribute("data-id")
+        const requestConfig = {
+          method: "DELETE",
+          header: new Headers()
+        }
+        fetch(`/filmes/${id}`, requestConfig)
+          .then(response => response.json())
+          .then(response => {
+            if (response.success === "ok") {
+              const card = btn.closest(".col")
+              card.classList.add("fadeOut")
+              setTimeout(() => card.remove(), 1000);
+            }
+          })
+          .catch(error => {
+            M.toast({
+              html: 'Erro ao excluir'
             })
           })
       });

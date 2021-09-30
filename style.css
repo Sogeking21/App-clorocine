@@ -9,3 +9,12 @@ body{
 .nav-header h1{
     text-shadow: 2px 2px 15px #000000;
 }
+
+.titulo{
+    padding-bottom: 1em;
+}
+
+.fadeOut{
+    opacity: 0;
+    transition: 1s;
+}

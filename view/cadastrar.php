@@ -1,9 +1,10 @@
-<?php include"cabecalho.php"?>
+<?php include "cabecalho.php" ?>
 
-    <title>Cadastrar</title>
+<title>Cadastrar</title>
 </head>
+
 <body>
-    <nav class="nav-extended purple lighten-3">
+  <nav class="nav-extended purple lighten-3">
     <div class="nav-wrapper">
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -20,58 +21,59 @@
     </div>
   </nav>
   <!--Formulario-->
-  
+
   <div class="row">
-  <form method="POST" enctype="multipart/form-data">
-    <div class="col s6 offset-s3 ">
+    <form method="POST" enctype="multipart/form-data">
+      <div class="col s6 offset-s3 ">
         <div class="card ">
-            <div class="card-content white-text">
-                <span class="card-title">Cadastar filme</span>
-                <!-- input titulo-->
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input  name="titulo" id="titulo" type="text" class="validate"  required>
-                      <label for="titulo">titulo do filme</label>
-                    </div>
-                  </div>
-              <!-- input sinopse-->
+          <div class="card-content white-text">
+            <span class="card-title">Cadastar filme</span>
+            <!-- input titulo-->
+            <div class="row">
+              <div class="input-field col s6">
+                <input name="titulo" id="titulo" type="text" class="validate" required>
+                <label for="titulo">titulo do filme</label>
+              </div>
+            </div>
+            <!-- input sinopse-->
+            <div class="row">
+
               <div class="row">
-                
-                <div class="row">
-                  <div class="input-field col s12">
-                    <textarea  name="sinopse" id="sinopse"class="materialize-textarea"></textarea>
-                    <label for="sinopse">Sinopse</label>
-                  </div>
+                <div class="input-field col s12">
+                  <textarea name="sinopse" id="sinopse" class="materialize-textarea"></textarea>
+                  <label for="sinopse">Sinopse</label>
                 </div>
               </div>
-              <!-- input nota-->
-              <div class="row">
-                    <div class="input-field col s1">
-                      <input  name="nota" id="nota" type="number" step=".1" min="0" max="10" class="validate" required>
-                      <label for="nota">Nota</label>
-                    </div>
-                  </div>
-                  <!--capa-->
-                  <div class="file-field input-field">
-                    <div class="btn">
-                      <span>Capa</span>
-                      <input type="file" name="poster_file">
-                    </div>
-                    <div class="file-path-wrapper">
-                      <input class="file-path validate" type="text" name="poster">
-                    </div>
-                  </div>
-                  <!-- botao cancelar e comfirmar-->
-            <div class="card-action">
-                <a  class="btn" href="/">Cancelar</a>
-                <button type="submit" class="waves-effect waves-light btn">Confirmar</button>
             </div>
+            <!-- input nota-->
+            <div class="row">
+              <div class="input-field col s1">
+                <input name="nota" id="nota" type="number" step=".1" min="0" max="10" class="validate" required>
+                <label for="nota">Nota</label>
+              </div>
+            </div>
+            <!--capa-->
+            <div class="file-field input-field">
+              <div class="btn purple lighten back-text">
+                <span>Capa</span>
+                <input type="file" name="poster_file" accept="image/*">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" name="poster">
+              </div>
+            </div>
+            <!-- botao cancelar e comfirmar-->
+            <div class="card-action">
+              <a class="btn" href="/">Cancelar</a>
+              <button type="submit" class="waves-effect waves-light btn">Confirmar</button>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </form>
   </div>
-</form>
-</div>
 
 </body>
+
 </html>
 <?php

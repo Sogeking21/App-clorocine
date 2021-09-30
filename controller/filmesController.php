@@ -49,7 +49,14 @@ class filmesController
     {
         $filmesRepository = new FilmeRepositoryPDO();
         $result = ['success' => $filmesRepository->favoritar($id)];
+        header("Content-type: applicationn/json");
+        echo json_encode($result);
+    }
 
+    public function delete(int $id)
+    {
+        $filmesRepository = new FilmeRepositoryPDO();
+        $result = ['success' => $filmesRepository->delete($id)];
         header("Content-type: applicationn/json");
         echo json_encode($result);
     }
