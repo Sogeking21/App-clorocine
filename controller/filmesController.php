@@ -32,7 +32,6 @@ class filmesController
 
         header("Location: /");
     }
-
     private function savePoster($file)
     {
         $posterDir = "img/posters/";

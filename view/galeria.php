@@ -13,7 +13,9 @@ $filmes = $controller->index();
 ?>
 
 <body>
+
   <!--nav-->
+
   <nav class="nav-extended purple lighten-3">
     <div class="nav-wrapper">
 
@@ -23,22 +25,25 @@ $filmes = $controller->index();
       </ul>
     </div>
     <div class="nav-header center">
-      <h1 class="titulo">CLOROCINE</h1>
+      <h1 class="titulo">Lista de Filmes</h1>
     </div>
     <div class="nav-content">
-      <ul class="tabs tabs-transparent  purple darken-1">
+      <ul class="tabs tabs-transparent black ">
         <li class="tab"><a class="active" href="#test1">Todos</a></li>
         <li class="tab"><a href="#test2">Assistidos</a></li>
         <li class="tab"><a href="#test3">Favoritos</a></li>
+        <li class="tab"><a href="/nota">Nota</a></li>
       </ul>
     </div>
   </nav>
+
   <!--card -->
-  <div class="container">
+
+  <div class="container ">
     <div class="row">
       <?php foreach ($filmes as $filme) : ?>
-        <div class="col s7 m4 14 xl3">
-          <div class="card hoverable card-serie">
+        <div class="col s12 m6 l3 x2 ">
+          <div class="card hoverable card-serie filme">
             <div class="card-image">
               <img src="<?= $filme->poster ?>" alt="">
 
@@ -49,9 +54,9 @@ $filmes = $controller->index();
               <P class="valign-wrapper">
                 <i class="material-icons amber-text">star</i></a><?= $filme->nota ?>
               </P>
-              <span class="card-title"><?= $filme->titulo ?></span>
-              <p><?= $filme->sinopse ?></p>
-              <button class="waves-effect weves-light btn-small right red accent-2 btn-delete" data-id="<?= $filme->id ?>"><i class="material-icons">Delete</i>
+              <span class="card-title titulo"><?= $filme->titulo ?></span>
+              <p class="texto"><?= $filme->sinopse ?></p>
+              <button class="btn-floating halfway-fab waves-effect waves-ligt rigth red accent-2 btn-delete" data-id="<?= $filme->id ?>"><i class="material-icons">delete</i>
 
               </button>
             </div>
@@ -108,6 +113,17 @@ $filmes = $controller->index();
             })
           })
       });
+    });
+
+    $('btn').on('click', function() {
+      $.ajax({
+        url: "/desc.php",
+        data: {
+          id: 1
+        }
+      }).done(function() {
+        alert('Script executado.');
+      })
     });
   </script>
 

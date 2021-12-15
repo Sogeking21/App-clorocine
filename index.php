@@ -18,6 +18,10 @@ if ($rota === "/novo") {
     };
     exit();
 }
+if ($rota === "/nota") {
+    require "view/nota.php";
+    exit();
+}
 
 if (substr($rota, 0, strlen("/favoritar")) === "/favoritar") {
     $controller = new FilmesController();

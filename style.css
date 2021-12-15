@@ -2,7 +2,7 @@ body{
     background-color: #e5e5e5;
 }
 .nav-extended{
-    background-image: url("img/capa.jpg");
+    background-image: url("image/capa.jpg");
     background-size: cover;
     background-blend-mode: soft-light;
 }
@@ -10,8 +10,22 @@ body{
     text-shadow: 2px 2px 15px #000000;
 }
 
+.filme{
+    height:1000px;
+}
+
 .titulo{
+    font-size: 3em;
+    font-weight: bold;
     padding-bottom: 1em;
+}
+
+.texto{
+    max-width: 900px;
+    height: 300px;
+}
+.btn-delete:hover,.btn-fav:hover{
+    box-shadow: 0 0 1em black;
 }
 
 .fadeOut{
