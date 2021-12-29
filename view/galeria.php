@@ -25,12 +25,11 @@ $filmes = $controller->index();
       </ul>
     </div>
     <div class="nav-header center">
-      <h1 class="titulo">Lista de Filmes</h1>
+      <h1 class="titulo">LISTA DE FILMES</h1>
     </div>
     <div class="nav-content">
-      <ul class="tabs tabs-transparent black ">
-        <li class="tab"><a class="active" href="/">Todos</a></li>
-        <li class="tab"><a href="#test2">Assistidos</a></li>
+      <ul class="tabs tabs-transparent red accent-4 ">
+        <li class="tab"><a class="active  black" href="/">Todos</a></li>
         <li class="tab"><a href="/favorito">Favoritos</a></li>
         <li class="tab"><a href="/nota">Nota</a></li>
       </ul>
@@ -67,7 +66,7 @@ $filmes = $controller->index();
   </div>
 
   <?= Mensagem::mostar(); ?>
-
+  <?php include "footer.php" ?>
   <script>
     document.querySelectorAll(".btn-fav").forEach(btn => {
       btn.addEventListener("click", e => {

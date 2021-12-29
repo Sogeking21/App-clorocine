@@ -10,7 +10,14 @@
       </ul>
     </div>
     <div class="nav-header center">
-      <h1>CLOROCINE</h1>
+      <h1>CADASTRAR</h1>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent red accent-4 ">
+        <li class="tab"><a href="/">Todos</a></li>
+        <li class="tab"><a href="/favorito">Favoritos</a></li>
+        <li class="tab"><a href="/nota">Nota</a></li>
+      </ul>
     </div>
   </nav>
 
@@ -67,4 +74,5 @@
       </div>
     </form>
   </div>
+  <?php include "footer.php" ?>
 </body>

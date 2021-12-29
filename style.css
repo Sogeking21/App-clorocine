@@ -1,10 +1,8 @@
 body{
-    background-color: #e5e5e5;
+    background-color: #757575;
 }
 .nav-extended{
-    background-image: url("image/capa.jpg");
-    background-size: cover;
-    background-blend-mode: soft-light;
+    background-image: url("image/background.jpg");
 }
 .nav-header h1{
     text-shadow: 2px 2px 15px #000000;
@@ -31,4 +29,8 @@ body{
 .fadeOut{
     opacity: 0;
     transition: 1s;
+}
+
+.error{
+    height:  80vh;
 }

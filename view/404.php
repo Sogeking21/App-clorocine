@@ -1,16 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include "cabecalho.php" ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
 <body>
-    <h1>404 Error</h1>
-    <a href="/">Voltar para a pagina inicial</a>
+    <!--nav-->
+
+    <nav class="nav-extended purple lighten-3">
+        <div class="nav-wrapper">
+
+            <ul id="nav-mobile" class="right">
+                <li class="active"><a href="/">Galeira</a></li>
+                <li class="/novo"><a href="/novo">Cadastar</a></li>
+            </ul>
+        </div>
+        <div class="nav-header center">
+            <h1 class="titulo">ERROR</h1>
+        </div>
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent black ">
+                <li class="tab"><a class="active" href="/">Todos</a></li>
+                <li class="tab"><a href="#test2">Assistidos</a></li>
+                <li class="tab"><a href="/favorito">Favoritos</a></li>
+                <li class="tab"><a href="/nota">Nota</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="center error ">
+            <h1>404 Error</h1>
+            <a href="/">Voltar para a pagina inicial</a>
+        </div>
+    </div>
+    <?php include "footer.php" ?>
 </body>
 
 </html>
