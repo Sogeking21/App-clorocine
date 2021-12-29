@@ -10,6 +10,21 @@ require "./util/Mensagem.php";
 $controller = new filmesController();
 $filmes = $controller->index();
 
+usort(
+
+  $filmes,
+
+  function ($a, $b) {
+
+
+    if ($a->favorito == $b->favorito) return 0;
+
+    return (($a->favorito > $b->favorito) ? -1 : 1);
+  }
+);
+?>
+
+
 ?>
 
 <body>

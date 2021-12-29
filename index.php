@@ -10,6 +10,16 @@ if ($rota === "/") {
     exit();
 }
 
+if ($rota === "/nota") {
+    require "view/nota.php";
+    exit();
+}
+
+if ($rota === "/favorito") {
+    require "view/favorito.php";
+    exit();
+}
+
 if ($rota === "/novo") {
     if ($metodo == "GET") require "view/cadastrar.php";
     if ($metodo == "POST") {
