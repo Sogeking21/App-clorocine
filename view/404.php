@@ -16,7 +16,7 @@
             <h1 class="titulo">ERROR</h1>
         </div>
         <div class="nav-content">
-            <ul class="tabs tabs-transparent black ">
+            <ul class="tabs tabs-transparent red accent-4 ">
                 <li class="tab"><a class="active" href="/">Todos</a></li>
                 <li class="tab"><a href="#test2">Assistidos</a></li>
                 <li class="tab"><a href="/favorito">Favoritos</a></li>

@@ -1,23 +1,25 @@
-<footer class="page-footer grey darken-4">
+< <footer class="page-footer black">
   <div class="container">
-    <div class="row">
+    <div class="row ">
       <div class="col l6 s12">
-        <h5 class="white-text">Footer Content</h5>
-        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        <h5 class="white-text">Vitor Leite</h5>
+        <p class="grey-text text-lighten-4">Projeto feito em PHP e Mysql</p>
       </div>
       <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Links</h5>
+        <h5 class="white-text">Minhas Redes</h5>
         <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-
+          <li><a href="https://www.linkedin.com/in/vitor-hugo-soares-303ab81a0/" class="waves-effect waves-light btn-floating social linkedin light-blue accent-4">
+              <i class="fa fa-linkedin"></i> Sign in with linkedin</a>
+          </li>
+          <li><a href="https://github.com/Sogeking21" class="waves-effect waves-light btn-floating social github grey darken-2">
+              <i class="fa fa-github"></i> Sign in with github</a></li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="footer-copyright black">
+  <div class="footer-copyright">
     <div class="container">
-      © 2014 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      © 2021 Copyright Text
     </div>
   </div>
-</footer>
+  </footer>

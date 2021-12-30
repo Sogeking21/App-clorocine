@@ -1,5 +1,5 @@
 body{
-    background-color: #757575;
+    background-color: #222;
 }
 .nav-extended{
     background-image: url("image/background.jpg");
@@ -19,6 +19,7 @@ body{
 }
 
 .texto{
+   /* color:#ffff;*/
     max-width: 900px;
     height: 300px;
 }
