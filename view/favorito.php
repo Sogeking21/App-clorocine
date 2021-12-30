@@ -19,7 +19,7 @@ usort(
 
     if ($a->favorito == $b->favorito) return 0;
 
-    return (($a->favorito > $b->favorito) ? -1 : 0);
+    return (($a->favorito > $b->favorito) ? -1 : 1);
   }
 );
 ?>
