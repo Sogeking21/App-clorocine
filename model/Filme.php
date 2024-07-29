@@ -1,6 +1,7 @@
 <?php
 
-class Filme{
+class Filme
+{
 
     /** @var int  $id */
     public $id;
@@ -17,4 +18,6 @@ class Filme{
     /** @var string $poster */
     public $poster;
 
+    /** @var bool $facorito */
+    public $favorito;
 }

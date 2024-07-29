@@ -4,62 +4,116 @@ require "conexao.php";
 
 class FilmeRepositoryPDO
 {
-
     private $conexao;
 
-    public function __construct()
+    public function __construct($conexao)
     {
-        $this->conexao = conexao::criar();
+        $this->conexao = $conexao;
     }
 
-    public function listarTodos(): array
+    public function listarTodos()
     {
-        $filmeLista = array();
-
         $sql = "SELECT * FROM filmes";
-        $filmes = $this->conexao->query($sql);
-        if (!$filmes) return false;
+        $stmt = $this->conexao->prepare($sql);
+        $result = $stmt->execute();
 
-        while ($filme = $filmes->fetchObject()) {
-            array_push($filmeLista, $filme);
+        $filmes = [];
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $filme = new Filme();
+            $filme->id = $row['id'];
+            $filme->titulo = $row['titulo'];
+            $filme->sinopse = $row['sinopse'];
+            $filme->nota = $row['nota'];
+            $filme->poster = $row['poster'];
+            $filme->favorito = $row['favorito'];
+
+            $filmes[] = $filme;
         }
-        return $filmeLista;
+
+        return $filmes;
     }
+
+    public function listarPorNota()
+    {
+        $query = "SELECT * FROM filmes ORDER BY nota DESC"; // Ordena por nota de forma descendente
+        $result = $this->conexao->query($query);
+
+        $filmes = [];
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $filme = new Filme();
+            $filme->id = $row['id'];
+            $filme->titulo = $row['titulo'];
+            $filme->sinopse = $row['sinopse'];
+            $filme->nota = $row['nota'];
+            $filme->poster = $row['poster'];
+            $filme->favorito = $row['favorito'];
+
+            $filmes[] = $filme;
+        }
+
+        return $filmes;
+    }
+
 
     public function salvar($filme): bool
     {
-        $sql = "INSERT INTO filmes (titulo, poster, sinopse, nota) 
-        VALUES (:titulo,:poster,:sinopse,:nota)";
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(':titulo', $filme->titulo, PDO::PARAM_STR);
-        $stmt->bindValue(':sinopse', $filme->sinopse, PDO::PARAM_STR);
-        $stmt->bindValue(':nota', $filme->nota, PDO::PARAM_STR);
-        $stmt->bindValue(':poster', $filme->poster, PDO::PARAM_STR);
+        $stmt = $this->conexao->prepare("INSERT INTO filmes (titulo, sinopse, nota, poster) VALUES (?, ?, ?, ?)");
+        $stmt->bindValue(1, $filme->titulo, SQLITE3_TEXT);
+        $stmt->bindValue(2, $filme->sinopse, SQLITE3_TEXT);
+        $stmt->bindValue(3, $filme->nota, SQLITE3_FLOAT);
+        $stmt->bindValue(4, $filme->poster, SQLITE3_TEXT);
 
-        return $stmt->execute();
+        // Verificar se a execução foi bem-sucedida
+        $result = $stmt->execute();
+
+        // Retorna true se a execução foi bem-sucedida, senão false
+        return $result !== false;
     }
-
     public function favoritar(int $id)
     {
-        $sql = "UPDATE filmes SET favorito = NOT favorito WHERE id=:id";
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        if ($stmt->execute()) {
-            return "ok";
-        } else {
+        try {
+            $sql = "UPDATE filmes SET favorito = NOT favorito WHERE id=:id";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return "erro";
+            }
+        } catch (PDOException $e) {
+            echo "Erro ao favoritar filme: " . $e->getMessage();
             return "erro";
         }
     }
 
-    public function delete(int $id)
+    public function delete(int $id) {
+       
+        $query = "DELETE FROM filmes WHERE id = :id";
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+    public function buscar($query, $conexao)
     {
-        $sql = "DELETE FROM filmes WHERE id=:id";
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        if ($stmt->execute()) {
-            return "ok";
-        } else {
-            return "erro";
+        $stmt = $conexao->prepare("SELECT * FROM filmes WHERE titulo LIKE :query");
+        $query = '%' . $query . '%';
+        $stmt->bindValue(':query', $query, SQLITE3_TEXT);
+        $result = $stmt->execute();
+
+        $filmes = [];
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $filme = new Filme();
+            $filme->id = $row['id'];
+            $filme->titulo = $row['titulo'];
+            $filme->sinopse = $row['sinopse'];
+            $filme->nota = $row['nota'];
+            $filme->poster = $row['poster'];
+            $filme->favorito = $row['favorito']; // Certifique-se de ter essa coluna na tabela
+
+            $filmes[] = $filme;
         }
+
+        return $filmes;
     }
 }

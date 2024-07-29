@@ -1,47 +1,16 @@
 <?php
 
-$rota = $_SERVER["REQUEST_URI"];
-$metodo = $_SERVER["REQUEST_METHOD"];
+// Inclua outros arquivos necessários
 
-require "./controller/FilmesController.php";
+// Inclua o router.php para lidar com as rotas
+require_once "router.php";
+if (isset($_SESSION["usuario_id"]) && isset($_SESSION["usuario_nome"])) {
 
-if ($rota === "/") {
-    require "view/galeria.php";
-    exit();
+  // Redirecione para a página de perfil
+  header("Location: perfil_usuario.php");
+  exit();
+} else {
+  // Autenticação falhou - senha incorreta
+  header("Location: view/login.php");
+  exit();
 }
-
-if ($rota === "/nota") {
-    require "view/nota.php";
-    exit();
-}
-
-if ($rota === "/favorito") {
-    require "view/favorito.php";
-    exit();
-}
-
-if ($rota === "/novo") {
-    if ($metodo == "GET") require "view/cadastrar.php";
-    if ($metodo == "POST") {
-        $controller = new FilmesController();
-        $controller->save($_REQUEST);
-    };
-    exit();
-}
-
-if (substr($rota, 0, strlen("/favoritar")) === "/favoritar") {
-    $controller = new FilmesController();
-    $controller->favorite(basename($rota));
-    exit();
-}
-
-if (substr($rota, 0, strlen("/filmes")) === "/filmes") {
-    if ($metodo == "GET") require "view/galeria.php";
-    if ($metodo == "DELETE") {
-        $controller = new FilmesController();
-        $controller->delete(basename($rota));
-    }
-    exit();
-}
-
-require "view/404.php";

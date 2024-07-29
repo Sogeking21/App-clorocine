@@ -1,22 +1,72 @@
-<?php include "cabecalho.php" ?>
+<?php include "cabecalho.php";
+require_once "../repository/FilmesRepositoryPDO.php";
+require_once "../model/Filme.php";
+require_once "../util/VerificarUsuario.php";
+$dbFilePath = __DIR__ . '/../db/filmes.db';
 
-<body>
+if (!isset($_SESSION)) {
+  session_start();
+}
+verificarAutenticacao();
 
-  <nav class="nav-extended purple lighten-3">
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $conexao = new SQLite3($filename);
+  $filmesRepository = new FilmeRepositoryPDO($conexao);
+
+  $titulo = $_POST["titulo"];
+  $sinopse = $_POST["sinopse"];
+  $nota = $_POST["nota"];
+  $poster = $_POST["poster"];
+
+  // Criar objeto Filme
+  $filme = new Filme();
+  $filme->titulo = $titulo;
+  $filme->sinopse = $sinopse;
+  $filme->nota = $nota;
+  $filme->poster = $poster;
+
+  // Chamar a função salvar do FilmeRepository
+  if ($filmesRepository->salvar($filme)) {
+    $_SESSION["msg"] = "Filme cadastrado com sucesso";
+  } else {
+    $_SESSION["msg"] = "Erro ao cadastrar filme";
+  }
+
+  // Redirecionar para a galeria página
+    header("Location: galeria.php");
+  exit();
+}
+
+/* consulta no banco de dados */
+require "../util/Mensagem.php";
+
+
+?>
+
+<body class="">
+
+  <nav class="nav-extended red darken-2">
     <div class="nav-wrapper">
+
       <ul id="nav-mobile" class="right">
-        <li><a href="/">Galeria</a></li>
-        <li class="active"><a href="/novo">Cadastrar</a></li>
+        <li class="active"><a href="login.php">Login</a></li>
+        <li><a href="cadastrar.php">Cadastrar</a></li>
       </ul>
     </div>
     <div class="nav-header center">
-      <h1>CADASTRAR</h1>
+      <h1 class="titulo">LISTA DE FILMES</h1>
     </div>
-    <div class="nav-content">
-      <ul class="tabs tabs-transparent red accent-4 ">
-        <li class="tab"><a href="/">Todos</a></li>
-        <li class="tab"><a href="/favorito">Favoritos</a></li>
-        <li class="tab"><a href="/nota">Nota</a></li>
+    <div class="nav-mobile">
+      <ul class="tabs tabs-transparent red darken-4">
+        <li class="tab"><a class="active  black" href="galeria.php">Galeria</a></li>
+        <li class="tab"><a href="favorito.php">Favoritos</a></li>
+        <li class="tab"><a href="nota.php">Nota</a></li>
+        <li>
+          <form action="buscar.php" method="GET" style="display: flex; align-items: center;">
+            <input type="text" name="query" placeholder="Pesquisar filmes..." style="margin: 0 10px;">
+            <button type="submit" class="btn">Buscar</button>
+          </form>
+        </li>
       </ul>
     </div>
   </nav>
@@ -56,7 +106,7 @@
 
             <!-- input capa -->
             <div class="file-field input-field">
-              <div class="btn red accent-4 ">
+              <div class="btn red darken-2 ">
                 <span>Capa</span>
                 <input type="url" name="poster_file" accept="image/*">
               </div>
@@ -66,8 +116,8 @@
             </div>
 
             <div class="card-action">
-              <a class="btn waves-effect waves-light red accent-4" href="/">Cancelar</a>
-              <button type="submit" class="waves-effect waves-light btn  red accent-4">Confirmar</button>
+              <a class="btn waves-effect waves-light red darken-2" href="/">Cancelar</a>
+              <button type="submit" class="waves-effect waves-light btn  red darken-2">Confirmar</button>
             </div>
           </div>
         </div>

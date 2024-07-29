@@ -1,37 +1,41 @@
-body{
-    background-color: #222;
+body {
+    background-color: #e5e5e5;
 }
-.nav-extended{
-    background-image: url("image/background.jpg");
+
+.nav-extended {
+    background-image: url("image/capa.jpg");
+    background-size: cover;
+    background-blend-mode: soft-light;
 }
-.nav-header h1{
+
+.nav-header h1 {
     text-shadow: 2px 2px 15px #000000;
 }
 
-.filme{
-    height:1000px;
+.body-perfil-usuario{
+    height: 60vh;
 }
 
-.titulo{
+.filme {
+    height: 1000px;
+}
+
+.titulo {
     font-size: 3em;
     font-weight: bold;
     padding-bottom: 1em;
 }
-
-.texto{
-   /* color:#ffff;*/
+.texto {
     max-width: 900px;
     height: 300px;
 }
-.btn-delete:hover,.btn-fav:hover{
-    box-shadow: 0 0 1em black;
+
+.btn-delete:hover,
+.btn-fav:hover {
+    box-shadow: 0 0 1em  white;
 }
 
-.fadeOut{
+.fadeOut {
     opacity: 0;
     transition: 1s;
-}
-
-.error{
-    height:  80vh;
 }
