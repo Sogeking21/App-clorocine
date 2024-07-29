@@ -7,6 +7,33 @@ $dbFilePath = __DIR__ . '/../db/filmes.db';
 if (!isset($_SESSION)) {
   session_start();
 }
+// Conexão com o banco de dados SQLite
+$conexao = new SQLite3(realpath("../db/filmes.db"));
+
+if (!$conexao) {
+    die("Erro na conexão: " . $conexao->lastErrorMsg());
+}
+// Verificar se o usuário é super usuário
+$usuario_id = $_SESSION["usuario_id"];
+$sql_superuser = "SELECT is_superuser FROM usuarios WHERE id = :id";
+$stmt = $conexao->prepare($sql_superuser);
+
+if ($stmt) {
+    $stmt->bindValue(':id', $usuario_id, SQLITE3_INTEGER);
+    $result_superuser = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+
+    if ($result_superuser === false) {
+        die("Erro ao verificar super usuário: " . $conexao->lastErrorMsg());
+    }
+
+    // Verifica se o usuário não é super usuário
+    if (!$result_superuser || !$result_superuser['is_superuser']) {
+        header("Location: no_access.php");
+        exit();
+    }
+} else {
+    die("Erro ao preparar a consulta: " . $conexao->lastErrorMsg());
+}
 verificarAutenticacao();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
