@@ -64,9 +64,11 @@ $result = $conexao->query($sql);
             </ul>
         </div>
     </nav>
-    <h2>Lista de Usuários</h2>
+    <h2 class="text_white">Lista de Usuários</h2>
 
+    <div class="text_white">
     <?php
+    
     if ($result) {
         echo "<table border='1'>";
         echo "<tr><th>ID</th><th>Nome</th><th>Email</th></tr>";
@@ -84,6 +86,7 @@ $result = $conexao->query($sql);
         echo "Nenhum usuário encontrado.";
     }
     ?>
+    </div>
     <br>
     <a href="logout.php">Logout</a>
     <?php include "footer.php" ?>

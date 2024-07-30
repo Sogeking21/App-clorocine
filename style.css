@@ -1,13 +1,6 @@
 body {
-    background-color: #e5e5e5;
+    background-color: #212121;
 }
-
-.nav-extended {
-    background-image: url("image/capa.jpg");
-    background-size: cover;
-    background-blend-mode: soft-light;
-}
-
 .nav-header h1 {
     text-shadow: 2px 2px 15px #000000;
 }
@@ -29,10 +22,45 @@ body {
     max-width: 900px;
     height: 300px;
 }
-
-.btn-delete:hover,
+.text_white{
+    color: #e5e5e5;
+}
+.card:hover{
+    box-shadow: 0 0 1em  white;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+.btn{
+    background-color: #000000;
+}
+.btn:hover{
+    background-color: #e5e5e5;
+    color: #000000;
+}
+.material-icons:hover{
+    color: #e5e5e5;
+    
+}
+.btn-delete:hover{
+    box-shadow: 0 0 1em  white;
+}
+.btn-delete:hover i {
+    color: white;
+    transform: scale(1.5);
+    transition: all 0.5s ease;
+}
+.btn-fav{
+    background-color: #B71C1C;
+}
 .btn-fav:hover {
     box-shadow: 0 0 1em  white;
+    background-color: #B71C1C;
+
+}
+.btn-fav:hover i {
+    color: white;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
 }
 
 .fadeOut {

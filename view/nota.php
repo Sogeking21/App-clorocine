@@ -51,13 +51,13 @@ $filmes = $controller->listarPorNota()
 
         <?php if (!$filmes) echo "<p class='card-panel red lighten-4'>Nenhum filme cadastrado</p>" ?>
 
-        <<?php foreach ($filmes as $filme) : ?> <div class="col s12 m6 l4 x12 ">
+        <?php foreach ($filmes as $filme) : ?> <div class="col s12 m6 l4 x12 ">
           <div class="card hoverable card-serie black">
             <div class="card-image">
               <img src="<?= $filme->poster ?>" class="activator" />
               <form action="favoritar.php" method="post" style="display: inline;">
                 <input type="hidden" name="id" value="<?= $filme->id ?>">
-                <button type="submit" name="favoritar" class="btn-fav btn-floating halfway-fab waves-effect waves-light red accent-4">
+                <button type="submit" name="favoritar" class="btn-fav btn-floating halfway-fab waves-effect waves-light">
                   <i class="material-icons"><?= ($filme->favorito) ? "favorite" : "favorite_border" ?></i>
                 </button>
               </form>

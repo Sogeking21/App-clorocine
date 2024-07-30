@@ -49,9 +49,9 @@ if (isset($_SESSION["usuario_id"])) {
     <div class="center-align ">
       <div class="row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px; margin-top: 100px;">
         <div class="col s12 center-align">
-          <h2 class="center-align">Perfil do Usuário</h2>
+          <h2 class="center-align text_white">Perfil do Usuário</h2>
         </div>
-        <div class="row">
+        <div class="row text_white">
           <div class="col s12 center-align">Informações do Usuario Atual:</div>
           <div class="col s6">
             <p class="center-align">Nome: <?php echo $usuario['nome']; ?></p>
